@@ -1,4 +1,5 @@
 % problem
+% -------
 % robot movements: forward, backword, left, right
 % a cell contains only one shelve, and a robot carrying no shelve, can go underneath beneath the shelve
 % however, if a shelf is surrounded by shelves, robot needs to picup the shelves blocking to clear the path 
@@ -7,6 +8,7 @@
 
 
 % inputs
+% -------
 % cell/node label : 'n' (integer) with co-ordinates: (x,y)
 init(object(node,'n'),value(at,pair('x','y'))).
 
@@ -38,22 +40,30 @@ init(object(order,’o’),value(pickingStation,’p’)).
 
 
 % output
+% -------
 % (what needs ot be produced?): an action plan that results in all orders being filled
 % Important: robots have to deliver exactly the required number of units
 % Module: encoding Action description language: simple and complex transition systems
 
 
 % actions
+% -------
 % develop sets of constraints that fulfills all requirements
 % using this produce action plan, that fulfills the orders
 
 % move: 
+% t: time step
+% (x+dx, y+dy)
 occurs(object(robot,’r’),move(’dx’,’dy’),’t’).
 
 % pickup:
 occurs(object(robot,’r’),pickup,’t’).
 
 % deliver: 
+% order o
+% product i
+% units u
+% reduce units
 occurs(object(robot,’r’),deliver(’o’,’i’,’u’),’t’).
 
 % putdown: may not be used at times
@@ -71,4 +81,33 @@ occurs(object(robot,’r’),putdown,’t’).
 
 
 
-% valid solution: 
+% hints/tips
+% -------
+% 1. blocks world
+% 2. work on one action at a time : solve on how to perform move action, state changes.
+% 3. write all rules in plain english.
+% 4. write your instances to test, for ex for movement : define nodes of the grid and robots
+% simply create a goal consition:L any given robot should be located at a given spot.
+% you can experiment with diff number of robots, goals, grid shapes, and you can use it to test movement, collision requiremnts.
+
+
+p1:shelf3-1
+p2:shelf4-1
+p3:shelf6-4
+p4:shelf5-1
+p4:shelf6-1
+
+shelf3:(1,4)
+shelf4:(2,1)
+shelf6:(3,4)
+
+% orders
+o1:station1
+o1:p1-1
+o1:p3-4
+
+o2:station2
+o2:p2-1
+
+o3:station2
+o3:p4-1

@@ -41,21 +41,26 @@ N1 > N2 :- left_right(R, _, _, _, _, _, D), D=r, a(R,8,N1), a(R,9,N2).
 % you need to write down the remaining program below. For example, the first rule 
 % should “define the effect of the greater-than symbols on up-down directions”
 
-N1 < N2 :- up_down(C, D, _, _, _, _, _, _, _, _), D=u, a(1,C,N1), a(2,C,N2).
-N1 < N2 :- up_down(C, _, D, _, _, _, _, _, _, _), D=u, a(2,C,N1), a(3,C,N2).
-N1 < N2 :- up_down(C, _, _, D, _, _, _, _, _, _), D=u, a(3,C,N1), a(4,C,N2).
-N1 < N2 :- up_down(C, _, _, _, D, _, _, _, _, _), D=u, a(4,C,N1), a(5,C,N2).
-N1 < N2 :- up_down(C, _, _, _, _, D, _, _, _, _), D=u, a(5,C,N1), a(6,C,N2).
-N1 < N2 :- up_down(C, _, _, _, _, _, D, _, _, _), D=u, a(6,C,N1), a(7,C,N2).
-N1 < N2 :- up_down(C, _, _, _, _, _, _, D, _, _), D=u, a(7,C,N1), a(8,C,N2).
+N1 < N2 :- up_down(R, D, _, _, _, _, _, _, _, _), D=u, a(R,1,N1), a(R+1,1,N2).
+N1 < N2 :- up_down(R, _, D, _, _, _, _, _, _, _), D=u, a(R,2,N1), a(R+1,2,N2).
+N1 < N2 :- up_down(R, _, _, D, _, _, _, _, _, _), D=u, a(R,3,N1), a(R+1,3,N2).
+N1 < N2 :- up_down(R, _, _, _, D, _, _, _, _, _), D=u, a(R,4,N1), a(R+1,4,N2).
+N1 < N2 :- up_down(R, _, _, _, _, D, _, _, _, _), D=u, a(R,5,N1), a(R+1,5,N2).
+N1 < N2 :- up_down(R, _, _, _, _, _, D, _, _, _), D=u, a(R,6,N1), a(R+1,6,N2).
+N1 < N2 :- up_down(R, _, _, _, _, _, _, D, _, _), D=u, a(R,7,N1), a(R+1,7,N2).
+N1 < N2 :- up_down(R, _, _, _, _, _, _, _, D, _), D=u, a(R,8,N1), a(R+1,8,N2).
+N1 < N2 :- up_down(R, _, _, _, _, _, _, _, _, D), D=u, a(R,9,N1), a(R+1,9,N2).
+ 
+N1 > N2 :- up_down(R, D, _, _, _, _, _, _, _, _), D=d, a(R,1,N1), a(R+1,1,N2).
+N1 > N2 :- up_down(R, _, D, _, _, _, _, _, _, _), D=d, a(R,2,N1), a(R+1,2,N2).
+N1 > N2 :- up_down(R, _, _, D, _, _, _, _, _, _), D=d, a(R,3,N1), a(R+1,3,N2).
+N1 > N2 :- up_down(R, _, _, _, D, _, _, _, _, _), D=d, a(R,4,N1), a(R+1,4,N2).
+N1 > N2 :- up_down(R, _, _, _, _, D, _, _, _, _), D=d, a(R,5,N1), a(R+1,5,N2).
+N1 > N2 :- up_down(R, _, _, _, _, _, D, _, _, _), D=d, a(R,6,N1), a(R+1,6,N2).
+N1 > N2 :- up_down(R, _, _, _, _, _, _, D, _, _), D=d, a(R,7,N1), a(R+1,7,N2).
+N1 > N2 :- up_down(R, _, _, _, _, _, _, _, D, _), D=d, a(R,8,N1), a(R+1,8,N2).
+N1 > N2 :- up_down(R, _, _, _, _, _, _, _, _, D), D=d, a(R,9,N1), a(R+1,9,N2).
 
-N1 > N2 :- up_down(C, D, _, _, _, _, _, _, _, _), D=d, a(1,C,N1), a(2,C,N2).
-N1 > N2 :- up_down(C, _, D, _, _, _, _, _, _, _), D=d, a(2,C,N1), a(3,C,N2).
-N1 > N2 :- up_down(C, _, _, D, _, _, _, _, _, _), D=d, a(3,C,N1), a(4,C,N2).
-N1 > N2 :- up_down(C, _, _, _, D, _, _, _, _, _), D=d, a(4,C,N1), a(5,C,N2).
-N1 > N2 :- up_down(C, _, _, _, _, D, _, _, _, _), D=d, a(5,C,N1), a(6,C,N2).
-N1 > N2 :- up_down(C, _, _, _, _, _, D, _, _, _), D=d, a(6,C,N1), a(7,C,N2).
-N1 > N2 :- up_down(C, _, _, _, _, _, _, D, _, _), D=d, a(7,C,N1), a(8,C,N2).
 
 % write the remaining part of the clingo program below
 
@@ -73,3 +78,5 @@ N1 > N2 :- up_down(C, _, _, _, _, _, _, D, _, _), D=d, a(7,C,N1), a(8,C,N2).
 
 % no two different columns given a row and a number
 :- a(X,Y,N), a(X1,Y,N), X!=X1.
+
+#show a/3.

@@ -7,6 +7,7 @@ codomain(a;b;c).
 % for each element in y in codomain, 
 % the number of x that is mapped is zero 
 % then it violates this constraint
+
 :- {f(X,Y): domain(X)} = 0, codomain(Y).
 
 #show f/2.

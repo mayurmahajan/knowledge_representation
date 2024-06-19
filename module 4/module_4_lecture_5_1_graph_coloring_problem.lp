@@ -15,6 +15,6 @@ edge(6,(2;3;5)).
 %edge(X,Y) :- edge(Y,X).
 
 % the adjacent vertices should be of different color
-:- color(X1, C), color(X2,C), edge(X1,X2), edge(X2,X).
+:- color(X1, C), color(X2,C), edge(X1,X2), edge(X2,X1).
 
 #show color/2.
