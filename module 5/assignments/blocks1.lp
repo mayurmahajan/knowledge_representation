@@ -1,54 +1,57 @@
-%%%%%%%%%%%%%%%%%%%%
-% File: blocks.lp: Blocks World
-%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+% File: blocks.lp: Blocks World 
+%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% sort and object declaration
+% Sort and Object Declaration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% every block is a location
+% Every block is a location 
 location(B) :- block(B).
 
-% the table is a location
+% The table is a location 
 location(table).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-% state description
+% State Description
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% two blocks can't be on the same block at the same time
+% Two blocks can't be on the same block at the same time 
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
+% Limited number of blocks can be on the table at the same time
+:- {on(B, table, T) : block(B)} maxblocksontable, T = 0..m.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% effect and preconditions of action
+% Effect and Preconditions of Action
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% effect of moving a block
+% Effect of moving a block 
 on(B, L, T+1) :- move(B, L, T).
 
-% concurrent actions are limited by num of grippers
+% Concurrent actions are limited by the number of grippers
 :- not {move(BB, LL, T)} grippers, T = 0..m-1.
 
-% a block can be moved only when it is clear
+% A block can be moved only when it is clear 
 :- move(B, L, T), on(B1, B, T).
 
-% a block can't be moved onto a block that is being moved also
+% A block can't be moved onto a block that is being moved also 
 :- move(B, B1, T), move(B1, L, T).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% domain independent axioms
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Domain Independent Axioms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% fluents are initially exogenous
+% Fluents are initially exogenous 
 1 {on(B, LL, 0) : location(LL)} 1 :- block(B).
 
-% uniqueness and existence of value constraints
-:- not 1 {on(B, LL, T)} 1, block(B), T = 1..m.
+% Uniqueness and existence of value constraints 
+:- not 1 {on(B, LL, T)} 1, block(B), T=1..m.
 
-% actions are exogenous
+% Actions are exogenous 
 {move(B, L, T)} :- block(B), location(L), T = 0..m-1.
 
-% commonsense law of inertia
+% Commonsense law of inertia 
 {on(B, L, T+1)} :- on(B, L, T), T < m.
 
 #show move/3.
