@@ -27,7 +27,7 @@ location(table).
 on(B,L,T+1) :- move(B,L,T).
 
 % concurrent actions are limited by number of grippers
-2 :- not {move(BB,LL,T)} grippers, T = 0..m-1.
+:- not {move(BB,LL,T)} grippers, T = 0..m-1.
 
 % a block can be moved only when it is clear
 :- move(B,L,T), on(B1,B,T).

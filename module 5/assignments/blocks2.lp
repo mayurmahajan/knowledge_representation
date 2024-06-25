@@ -19,11 +19,8 @@ location(table).
 % two blocks can't be on the same block at the same time
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
-% no block can be on itself
-%:- on(B, B, T), block(B), T = 0..m.
-
-% preventing loops (transitive closure to detect cycles)
-%:- on(B1, B2, T), on(B2, B3, T), block(B1), block(B2), block(B3), B1 != B3, T = 0..m.
+% prevent loops
+:- not on(B1, B2, T), on(B2, B3, T), block(B1), block(B2), block(B3), B1 != B3, T = 0..m.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % effect and preconditions of action
@@ -58,3 +55,5 @@ on(B, L, T+1) :- move(B, L, T).
 {on(B, L, T+1)} :- on(B, L, T), T < m.
 
 #show on/3.
+
+block(1..6).

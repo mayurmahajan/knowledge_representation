@@ -20,7 +20,7 @@ location(table).
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
 % Limited number of blocks can be on the table at the same time
-:- {on(B, table, T) : block(B)} maxblocksontable, T = 0..m.
+:- maxblocksontable+1 {on(B, table, T) : block(B)}, T = 0..m.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Effect and Preconditions of Action
