@@ -9,3 +9,5 @@ block(1..6).
 
 % Goal state
 :- not on(3, 2, m; 2, 1, m; 1, table, m; 6, 5, m; 5, 4, m; 4, table, m).
+
+%  clingo blocks.lp blocks-scenario.lp -c m=3 -c maxblocksontable=4 -c grippers=6

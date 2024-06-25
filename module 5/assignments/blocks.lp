@@ -19,6 +19,9 @@ location(table).
 % Two blocks can't be on the same block at the same time 
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
+% Limited number of blocks can be on the table at the same time
+:- not {on(B, table, T) : block(B)} maxblocksontable, T = 0..m.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Effect and Preconditions of Action
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
