@@ -50,3 +50,5 @@ on(B,L,T+1) :- move(B,L,T).
 
 % commonsense law of inertia
 {on(B,L,T+1)} :- on(B,L,T), T < mm.
+
+#minimize { 1, T, B, L : move(B, L, T) }.
