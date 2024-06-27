@@ -20,7 +20,7 @@ location(table).
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
 % prevent loops
-:- not on(B1, B2, T), on(B2, B3, T), block(B1), block(B2), block(B3), B1 != B3, T = 0..m.
+%:- not on(B1, B2, T), on(B2, B3, T), block(B1), block(B2), block(B3), B1 != B3, T = 0..m.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % effect and preconditions of action
@@ -54,6 +54,6 @@ on(B, L, T+1) :- move(B, L, T).
 % commonsense law of inertia
 {on(B, L, T+1)} :- on(B, L, T), T < m.
 
-#show on/3.
+%#show on/3.
 
 block(1..6).

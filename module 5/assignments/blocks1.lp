@@ -20,7 +20,7 @@ location(table).
 :- 2 {on(BB, B, T)}, block(B), T = 0..m.
 
 % Limited number of blocks can be on the table at the same time
-:- maxblocksontable+1 {on(B, table, T) : block(B)}, T = 0..m.
+:- not {on(B, table, T) : block(B)} maxblocksontable, T = 0..m.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Effect and Preconditions of Action
@@ -55,3 +55,4 @@ on(B, L, T+1) :- move(B, L, T).
 {on(B, L, T+1)} :- on(B, L, T), T < m.
 
 #show move/3.
+#minimize { 1, T, B, L : move(B, L, T) }.
