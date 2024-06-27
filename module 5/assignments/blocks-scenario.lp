@@ -17,7 +17,7 @@
 % Initial state
 % :- not on(1, 2, 0; 2, table, 0; 3, 4, 0; 4, table, 0; 5, 6, 0; 6, table, 0).
 % Goal state
- :- not on(3, 2, m; 2, 1, m; 1, table, m; 6, 5, m; 5, 4, m; 4, table, m).
+% :- not on(3, 2, m; 2, 1, m; 1, table, m; 6, 5, m; 5, 4, m; 4, table, m).
 %../../../../clingo.exe blocks1.lp blocks-scenario.lp -c m=3 -c maxblocksontable=4 -c grippers=2 0
 
 

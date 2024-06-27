@@ -50,3 +50,9 @@ on(B,L,T+1) :- move(B,L,T).
 
 % commonsense law of inertia
 {on(B,L,T+1)} :- on(B,L,T), T < mm.
+
+% Serializability constraints
+% Ensure a block is not moved while it is already being moved
+:- move(B1,L1,T), move(B2,L2,T), move(B3,L3,T), B1!=B2, B2!=B3, B3!=B1, L1 != L2, L != table.
+
+#show move/3.
