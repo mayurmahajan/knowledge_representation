@@ -5,7 +5,7 @@
 % File: blocks-scenario.lp
 
 % blocks declaration
-block(m).
+block(z).
 block(l).
 block(a).
 block(b).
@@ -22,8 +22,8 @@ block(h).
 block(i).
 
 % initial state
-:- not on(m, table, 0).
-:- not on(l, m, 0).
+:- not on(z, table, 0).
+:- not on(l, z, 0).
 :- not on(a, l, 0).
 :- not on(b, a, 0).
 :- not on(c, b, 0).
@@ -39,18 +39,18 @@ block(i).
 :- not on(i, h, 0).
 
 % goal state
-:- not on(e, j, mm).
-:- not on(a, e, mm).
-:- not on(n, a, mm).
-:- not on(i, d, mm).
-:- not on(h, i, mm).
-:- not on(m, h, mm).
-:- not on(o, m, mm).
-:- not on(k, g, mm).
-:- not on(c, k, mm).
-:- not on(b, c, mm).
-:- not on(l, b, mm).
+:- not on(e, j, m).
+:- not on(a, e, m).
+:- not on(n, a, m).
+:- not on(i, d, m).
+:- not on(h, i, m).
+:- not on(z, h, m).
+:- not on(o, z, m).
+:- not on(k, g, m).
+:- not on(c, k, m).
+:- not on(b, c, m).
+:- not on(l, b, m).
 
 
-%  ../../../../clingo.exe blocks4.lp blocks-scenario4.lp -c mm=4 -c grippers=10 0
+%  ../../../../clingo.exe blocks4.lp blocks-scenario4.lp -c m=4 -c grippers=10 0
 

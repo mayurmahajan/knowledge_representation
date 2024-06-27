@@ -57,6 +57,5 @@ on(B, L, T+1) :- move(B, L, T).
 % commonsense law of inertia
 {on(B, L, T+1)} :- on(B, L, T), T < m.
 
-%#show on/3.
 
 block(1..6).
